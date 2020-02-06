@@ -1,0 +1,225 @@
+<div class="content-wrapper">
+    
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Inicio</h1>
+          </div>
+      <!--   <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+              <li class="breadcrumb-item active">Nombre de la pagina Abierta</li>
+            </ol>
+          </div>-->
+        </div>
+      </div>
+    </div>
+    <!--- tablero inicial--->
+    <section class="content">
+      <div class="container-fluid">
+        
+        <div class="row">
+        
+          <div class="col-lg-3 col-6">
+            <div class="small-box bg-info">
+              <div class="inner">
+            {{#each libros}}
+
+    <h3>{{total}}</h3>
+  
+  {{/each}}
+                <p>Libros</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <a href="/libros" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+
+          <div class="col-lg-3 col-6">
+            <div class="small-box bg-success">
+              <div class="inner">
+    
+    {{#each usuarios}}
+
+    <h3>{{total}}</h3>
+  
+  {{/each}}
+
+
+                <p>Usuarios</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="/usuarios" class="small-box-footer"> <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+        
+          <div class="col-lg-3 col-6">
+            <div class="small-box bg-warning">
+              <div class="inner">
+   
+
+   {{#each lectores}}
+
+    <h3>{{total}}</h3>
+  
+  {{/each}}
+
+
+                <p>Lectores</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="/lectores" class="small-box-footer"> <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+       
+          <div class="col-lg-3 col-6">
+         
+            <div class="small-box bg-danger">
+              <div class="inner"><h3>
+              
+ {{#each prestamo}}
+
+    {{total}}
+  
+  {{/each}}</h3>
+
+                <p>Prestamos</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <a href="/prestamos/pendientes" class="small-box-footer"> <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+         
+        </div>
+        
+      </div>
+    </section>
+     <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header border-0">
+                <div class="d-flex justify-content-between">
+                  <h3 class="card-title">Lector mas Frecuente</h3>
+                 
+                </div>
+              </div>
+            <div class="card-body">
+               
+
+                <div class="position-relative mb-4">
+                  <table  class="table table-bordered table-hover AllDataTables">
+                <thead>
+                <tr>
+                 <th>Visitas</th>
+                  <th>Nombres</th>
+                  <th>Apellidos</th>
+                  
+                  
+                </tr>
+                </thead>
+                <tbody>
+                    {{#each totallector}}
+                    
+                      <tr>
+                  <td>{{total}}</td>
+                  <td>{{nombres}}</td>
+                  <td>{{apellidos}}</td>
+                  
+           
+                  
+                </tr>
+                {{/each}}
+    
+                </tbody>
+              
+              </table>
+                </div>
+
+               
+             
+             
+             
+             
+             
+             
+              </div>
+            </div>
+            <!-- /.card -->
+
+          
+          </div>
+          <!-- /.col-md-6 -->
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-header border-0">
+                <div class="d-flex justify-content-between">
+                  <h3 class="card-title">Libros mas solicitado</h3>
+                  
+                </div>
+              </div>
+              <div class="card-body">
+               
+
+                <div class="position-relative mb-4">
+                  <table  class="table table-bordered table-hover AllDataTables">
+                <thead>
+                <tr>
+                 <th>Total</th>
+                  <th>Titulo</th>
+                  <th>Autor</th>
+                  
+                  
+                </tr>
+                </thead>
+                <tbody>
+                    {{#each totallibros}}
+                    
+                      <tr>
+                  <td>{{total}}</td>
+                  <td>{{titulo_libro}}</td>
+                  <td>{{autor_libro}}</td>
+                  
+           
+                  
+                </tr>
+                {{/each}}
+    
+                </tbody>
+              
+              </table>
+                </div>
+
+               
+             
+             
+             
+             
+             
+             
+              </div>
+            </div>
+         
+
+          </div>
+      
+        </div>
+   
+      </div>
+    </div>
+
+
+  </div>

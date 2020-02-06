@@ -1,0 +1,91 @@
+<div class="content-wrapper">
+    
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Lectores</h1>
+          </div>
+         <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+              <li class="breadcrumb-item active">Lectores</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- contenedor -->
+    <section class="content">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Lista de Lectores</h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool .btn-flat" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fas fa-minus"></i></button>
+             
+              </div>              
+            </div>
+            <div class="card-header">
+            <span class="pull-left"><a href="/lectores/add"  class="btn btn-primary btn-sm" style = " float: right;" ><span class="glyphicon glyphicon-plus"></span>
+              <i class="fas fa-plus"></i>
+                              Agregar Lector
+                          </a> <br>
+              </div>
+
+            <div class="card-body">
+
+            
+              <table  class="table table-bordered table-hover AllDataTables">
+                <thead>
+                <tr>
+                 
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>Cedula</th>
+                  <th>Telefono</th>
+                  <th>E-mail</th>
+                  <th>Tipo usuario</th>
+                  <th>Accion</th>
+                  
+                </tr>
+                </thead>
+                <tbody>
+                    {{#each lectores}}
+                    
+                      <tr>
+                  
+                  <td>{{nombres}}</td>
+                  <td>{{apellidos}}</td>
+                  <td>{{ci}}</td>
+                  <td>{{telefono}}</td>
+                  <td>{{direccion}}</td>
+                  <td>{{tipo}}</td>
+                  <td><a href="/lectores/edit/{{id_lectores}}"  class="btn btn-info btn-sm">
+	<i class="fas fa-pencil-alt"></i>
+	Editar</a> 
+	<a href="/lectores/delete/{{id_lectores}}"  class="btn btn-danger btn-sm">
+	<i class="fas fa-trash"></i>
+	 Eliminar</a></td>
+                  
+                </tr>
+                {{/each}}
+    
+                </tbody>
+              
+              </table>
+            </div>
+            
+          </div>
+         
+        </div>
+      
+      </div>
+    
+    </section>
+  
+  </div>
+</div>

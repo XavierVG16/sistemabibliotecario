@@ -1,0 +1,85 @@
+<div class="content-wrapper">
+    
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1> Prestamos</h1>
+          </div>
+         <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/principal">Inicio</a></li>
+               <li class="breadcrumb-item"><a href="/prestamos">Prestamos</a></li>
+              <li class="breadcrumb-item active">Todo</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- contenedor -->
+    <section class="content">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Lista de Prestamos</h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool .btn-flat" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fas fa-minus"></i></button>
+             
+              </div>              
+            </div>
+          
+
+            <div class="card-body">
+
+            
+              <table  class="table table-bordered table-hover AllDataTables">
+                <thead>
+                <tr>
+                 
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>Fecha prestamos </th>
+                  <th>Fecha devolucion </th>
+               
+                  <th>Titulo Libro</th>
+                 
+               
+                  <th>Estado</th>
+                  
+                </tr>
+                </thead>
+                <tbody>
+                 {{#each todo}}
+                    
+                      <tr>
+                  
+                  <td>{{nombres}}</td>
+                  <td> {{apellidos}}</td>
+                  <td>{{fechaprestamo}}</td>
+                  <td>{{fechadevolucion}}</td>
+                  <td>{{titulo}}</td>
+                  
+             
+                  <td>{{estado}}</td>
+                  
+                </tr>
+            {{/each}}
+    
+                </tbody>
+              
+              </table>
+            </div>
+            
+          </div>
+         
+        </div>
+      
+      </div>
+    
+    </section>
+  
+  </div>
+</div>

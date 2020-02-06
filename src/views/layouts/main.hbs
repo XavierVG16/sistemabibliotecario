@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width={device-width}, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sistema bibliotecario</title>
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css" integrity="sha384-REHJTs1r2ErKBuJB0fCK99gCYsVjwxHrSU0N7I1zl9vZbggVJXRMsv/sLlOAGb4M" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/all.min.css">
+  <link rel="stylesheet" href="/css/adminlte.min.css">
+  <link rel="stylesheet" href="/css/color.css">
+  <link rel="stylesheet" href="/css/dataTables.bootstrap4.css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+  {{>navegation}}
+  {{>message}}
+  
+  
+    {{{ body}}}
+
+  
+    </div>
+    
+</body>
+{{#if user}}
+ {{>footer}}
+ {{/if }}
+<script src="/js/jquery.js"></script>
+<script src="/js/adminlte.js"></script>
+<script src="/js/jquery.dataTables.js"></script>
+<script src="/js/dataTables.bootstrap4.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/table.js"></script>
+</html>

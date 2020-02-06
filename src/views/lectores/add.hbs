@@ -1,0 +1,96 @@
+<div class="content-wrapper">
+    
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1> Lectores</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/principal">Inicio</a></li>
+              <li class="breadcrumb-item"><a href="/lectores">Lectores</a></li>
+              <li class="breadcrumb-item active">Agregar</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- contenedor -->
+    <section class="content">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Agregar Lector</h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool .btn-flat" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fas fa-minus"></i></button>
+              
+              </div>              
+            </div>
+            
+
+            <div class="card-body">
+            <form action="/lectores/add" method="POST">
+ <div class="form-row">
+    <div class="form-group col-md-6">
+      <label >Nombres</label>
+      <input type="text" class="form-control" name="nombres" placeholder="Nombres" autofocus>
+    </div>
+    <div class="form-group col-md-6">
+      <label >Apellidos</label>
+      <input type="text" class="form-control" name="apellidos" placeholder="Apellidos">
+    </div>
+  </div>
+
+ <div class="form-row">
+    <div class="form-group col-md-6">
+      <label >Cedula de Identidad</label>
+      <input type="text" class="form-control" name="ci" placeholder="Cedula de Identidad">
+    </div>
+    <div class="form-group col-md-6">
+      <label >Direccion</label>
+      <input type="text" class="form-control" name="direccion" placeholder="Direccion">
+    </div>
+  </div>
+  
+ 
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label >Telefono</label>
+      <input type="text" class="form-control" name="telefono" placeholder="Telefono">
+    </div>
+  
+    <div class="form-group col-md-2">
+      <label >Tipo Lector</label>
+      <select name="tipolector" class="form-control">
+        <option selected>Tipo Lector</option>
+        {{#each tipolector}}
+         
+        <option>{{nombre}}</option>
+        
+         {{/each }}
+       
+      </select>
+    </div>
+    
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Guardar</button>
+  
+  
+</form>
+            </div>
+            
+          </div>
+         
+        </div>
+      
+      </div>
+    
+    </section>
+  
+  </div>
+</div>
