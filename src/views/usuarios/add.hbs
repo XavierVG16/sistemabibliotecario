@@ -8,7 +8,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+              <li class="breadcrumb-item"><a href="/principal">Inicio</a></li>
               <li class="breadcrumb-item"><a href="/usuarios">Usuarios</a></li>
               <li class="breadcrumb-item active">Agregar</li>
             </ol>
@@ -37,22 +37,22 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label >Nombres</label>
-      <input type="text" class="form-control" name="nombres" placeholder="Nombres" autofocus>
+      <input type="text" class="form-control" name="nombres" placeholder="Nombres" autofocus required>
     </div>
     <div class="form-group col-md-6">
       <label >Apellidos</label>
-      <input type="text" class="form-control" name="apellidos" placeholder="Apellidos">
+      <input type="text" class="form-control" name="apellidos" placeholder="Apellidos" required>
     </div>
   </div>
 
  <div class="form-row">
     <div class="form-group col-md-6">
       <label >Cedula de Identidad</label>
-      <input type="text" class="form-control" name="ci" placeholder="Cedula de Identidad">
+      <input type="text" class="form-control" name="ci" placeholder="Cedula de Identidad" required>
     </div>
     <div class="form-group col-md-6">
       <label >Correo Electronico</label>
-      <input type="email" class="form-control" name="email" placeholder="Correo Electronico">
+      <input type="email" class="form-control" name="email" placeholder="Correo Electronico" required>
     </div>
   </div>
   
@@ -60,16 +60,16 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputCity">Telefono</label>
-      <input type="text" class="form-control" name="telefono" placeholder="Telefono">
+      <input type="text" class="form-control" name="telefono" placeholder="Telefono" required>
     </div>
     <div class="form-group col-md-4">
       <label for="inputState">Contraseña</label>
-      <input type="password" class="form-control" name="pass_usuario" placeholder="Contraseña">
+      <input type="password" class="form-control" name="pass_usuario" placeholder="Contraseña"required>
       
     </div>
     <div class="form-group col-md-2">
       <label for="inputZip">Tipo Usuario</label>
-      <select name="id_tipousuario" class="form-control">
+      <select name="id_tipousuario" class="form-control" required>
         <option selected>Tipo Usuario</option>
         {{#each tipousuario}}
         <option>{{denominacion}}</option>
