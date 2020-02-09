@@ -7,7 +7,7 @@ const { isLoggedIn } = require('../lib/auth');
 
 var idtipousuario =0;
 //redireccionar 
-router.get('/add', isLoggedIn,async (req, res) =>{
+router.get('/add', async (req, res) =>{
   const tipousuario = await pool.query('select * from tipousuario ');
   // console.log(usuarios);
     res.render('usuarios/add',{tipousuario});
@@ -38,7 +38,7 @@ router.post('/add', async(req, res)=>{
     res.redirect('/usuarios');
 });
 // tabla de ususarios
-router.get('/', isLoggedIn, async (req, res)=>{
+router.get('/',async (req, res)=>{
 
    const usuarios = await pool.query('select *, tipousuario.denominacion as tipo  from usuarios inner join tipousuario on usuarios.idtipousuario = tipousuario.id ');
   // console.log(usuarios);

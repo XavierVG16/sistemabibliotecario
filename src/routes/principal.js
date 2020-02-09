@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../database');
 const { isLoggedIn } = require('../lib/auth');
-router.get('/', isLoggedIn, async (req, res)=>{
+router.get('/',  async (req, res)=>{
 
     const libros = await pool.query('select    count(*) as total from libros ');
     const usuarios = await pool.query('select    count(*) as total from usuarios ');

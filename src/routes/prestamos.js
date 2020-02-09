@@ -18,7 +18,7 @@ router.get('/add', (req, res)=>{
 
 router.get('/',isLoggedIn, async (req, res)=>{
 
-    const libros = await pool.query('select * from libros ');
+    const libros = await pool.query('select *  from libros inner join estado on libros.prestados_libro = estado.idestado  ');
     // console.log(usuarios);
   
    
@@ -29,14 +29,14 @@ router.get('/',isLoggedIn, async (req, res)=>{
     const { id_libro} = req.params;
     
      
-    const libro = await pool.query('SELECT * FROM libros  WHERE id_libro = ?', [id_libro]);
+    const libro = await pool.query('SELECT * FROM libros  WHERE id_libros = ?', [id_libro]);
    
     res.render('prestamos/add',{libro: libro[0]});
 
  }),
  router.post('/add/:id_libro', async (req, res)=>{
     const  { id_libro} = req.params;
-
+      
      const { ci, fechaprestamo, id_usuario}= req.body;
      // obtener el id del del lector
      //--------------------------------------------------------------------------------//
@@ -45,16 +45,14 @@ router.get('/',isLoggedIn, async (req, res)=>{
      if (lector.length > 0){
          
         lector.forEach(element => {
-            if (element.estado ==0){
-            id_lector = element.id_lector;
-            }else {
-                req.flash('message', 'Lector no Disponible' );
-                res.redirect('/prestamos');
-                
-            }
-
+           
+                es = element.estado;
+            id_lector = element.id_lectores;
+            
+          
             
       });
+
     
      } else {
          console.log('no existe');
@@ -68,6 +66,8 @@ router.get('/',isLoggedIn, async (req, res)=>{
     id_libro = element.isbn_libro;
    });*/
    
+
+   if (es ==0){
    const estado_prestamo = 1;
      const add ={
          id_libro,
@@ -78,13 +78,13 @@ router.get('/',isLoggedIn, async (req, res)=>{
          id_usuario
      };
      const  prestados_libro =1;
-     const  estado =1;
+     const  estado =0;
      const e={ estado}
 
      const p = { prestados_libro};
    const registrar =await pool.query('insert into prestamos set ?',[add])
-  const libros = await pool.query('update libros set ? where id_libro = ?',[p,id_libro]);
-  const lectores = await pool.query('update lectores set ? where id_lector = ?',[e,id_lector]);
+  const libros = await pool.query('update libros set ? where id_libros = ?',[p,id_libro]);
+  const lectores = await pool.query('update lectores set ? where id_lectores = ?',[e,id_lector]);
 
      console.log(registrar);
      
@@ -92,6 +92,10 @@ router.get('/',isLoggedIn, async (req, res)=>{
     //console.log(ci);
     req.flash('message','Prestamo registrado Correctamente');
     res.redirect('/prestamos/pendientes');
+   }else {
+    req.flash('message', 'Lector no Disponible' );
+    res.redirect('/prestamos');
+   }
  })
 ///////////////////////////////////////////////////
 
@@ -120,7 +124,7 @@ const fechadevolucion = yyyy+'-'+mm+"-"+dd;
 
 const lectores = await pool.query('select * from prestamos Where id = ?',id);
 lectores.forEach(element => {
-    id_lector = element.id_lectores;
+    id_lector = element.id_lectore;
     id_libro = element.id_libro;
 });
 const estado = 0;
@@ -130,7 +134,7 @@ console.log(id_lector);
 /*--------------------------------------------------- estado libro -----------------------------------------------*/
 const prestados_libro = 0;
 const prestados = {prestados_libro}
- const libro = await pool.query('update libros set ? Where id_libro = ?',[prestados, id_libro]);
+ const libro = await pool.query('update libros set ? Where id_libros = ?',[prestados, id_libro]);
 
   // console.log(t);
   ////////////////////////////////entregar libro

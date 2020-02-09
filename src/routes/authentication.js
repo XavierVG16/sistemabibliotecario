@@ -8,8 +8,8 @@ router.get('/login',isNotLoggedIn, (req, res) => {
   });
   router.post('/login', (req, res, next) => {
    
-  
-
+  const consulta =req.body;
+  console.log(consulta);
     passport.authenticate('local.login', {
       successRedirect: '/principal',
       failureRedirect: '/login',
