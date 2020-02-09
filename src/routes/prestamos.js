@@ -57,7 +57,7 @@ router.get('/',isLoggedIn, async (req, res)=>{
      } else {
          console.log('no existe');
          req.flash('message','El Lector No Existe')
-         res.redirect('/prestamos/pendientes');
+         res.redirect('/lectores/add');
      }
      //----------------------------------------------------------------------------------
      // obteniendo el id del libro
@@ -90,7 +90,7 @@ router.get('/',isLoggedIn, async (req, res)=>{
      
     // console.log(d);
     //console.log(ci);
-    req.flash('message','Prestamo registrado Correctamente');
+    req.flash('success','Prestamo registrado Correctamente');
     res.redirect('/prestamos/pendientes');
    }else {
     req.flash('message', 'Lector no Disponible' );
@@ -144,7 +144,7 @@ const prestados = {prestados_libro}
  const prestamo =   await pool.query('Update prestamos set  ? Where id = ? ',[entregado, id]);
 console.log(prestamo);
 
-     req.flash('message', 'Libro entregado Correctamente' );
+     req.flash('success', 'Libro entregado Correctamente' );
     res.redirect('/prestamos/pendientes');
 });
 router.get('/', async (req, res)=>{

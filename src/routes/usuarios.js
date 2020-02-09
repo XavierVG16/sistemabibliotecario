@@ -50,7 +50,7 @@ router.get('/delete/:id', async(req, res)=>{
    const { id} = req.params;
     await pool.query('DELETE FROM usuarios WHERE id_usuario = ?', [id]);
   
-  req.flash('message', 'Usuario Eliminado Correctamente' );
+  req.flash('success', 'Usuario Eliminado Correctamente' );
     res.redirect('/usuarios');
 });
 router.get('/edit/:id', isLoggedIn,async(req, res)=>{
@@ -83,7 +83,7 @@ router.post('/edit/:id', async (req, res)=>{
    console.log(id);
    // console.log(edUsuario);
     await pool.query('UPDATE usuarios set ? WHERE id_usuario = ?', [edUsuario, id]);
-    req.flash('message', 'Usuario Actualizado Correctamente' );
+    req.flash('success', 'Usuario Actualizado Correctamente' );
     res.redirect('/usuarios');
 });
 

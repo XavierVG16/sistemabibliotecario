@@ -16,7 +16,7 @@ router.post('/add',isLoggedIn ,async function (req, res) {
     await pool.query ('INSERT INTO  carreras  set ?',[newCarrera]);
 
    // res.send('recibido');
-   req.flash('message', 'Carrera Guardado Correctamente' );
+   req.flash('success', 'Carrera Guardado Correctamente' );
    res.redirect('/carreras');
 
 
@@ -33,7 +33,7 @@ router.get('/', isLoggedIn,async (req, res)=>{
     // console.log(req.params.id);
     const { id } = req.params;
      await pool.query('DELETE FROM carreras WHERE ID = ?', [id]);
-     req.flash('message', 'Carrera Eliminada Correctamente' );
+     req.flash('success', 'Carrera Eliminada Correctamente' );
 
      res.redirect('/carreras');
  });
@@ -56,7 +56,7 @@ router.post('/edit/:id', isLoggedIn,async (req, res)=>{
     };
 
     await pool.query('UPDATE carreras set ? WHERE id = ?', [edCarrera, id]);
-    req.flash('message', 'Carrera Actualizada Correctamente' );
+    req.flash('success', 'Carrera Actualizada Correctamente' );
     res.redirect('/carreras');
 })
 

@@ -45,7 +45,7 @@ router.post('/add', isLoggedIn,async (req, res)  =>{
     
 
   await pool.query ('INSERT INTO lectores  set ?',[newLector]);
-   req.flash('message', 'Lector Guardado Correctamente' );
+   req.flash('success', 'Lector Guardado Correctamente' );
   res.redirect('/lectores');
  
 });
@@ -63,7 +63,7 @@ router.get('/',isLoggedIn, async (req, res)=>{
     // console.log(req.params.id);
     const { id} = req.params;
      await pool.query('DELETE FROM  lectores WHERE id_lectores = ?', [id]);
-     req.flash('message', 'Lector eliminado Correctamente' );
+     req.flash('success', 'Lector eliminado Correctamente' );
      res.redirect('/lectores');
      
  });
@@ -98,7 +98,7 @@ router.get('/',isLoggedIn, async (req, res)=>{
    console.log(id_tipolector);
    // console.log(edUsuario);
    await pool.query('UPDATE lectores set ? WHERE id_lectores = ?', [edLector, id]);
-   req.flash('message', 'Lector Actualizado Correctamente' );
+   req.flash('success', 'Lector Actualizado Correctamente' );
    res.redirect('/lectores');
   // res.send('recivido');
 })

@@ -24,7 +24,7 @@ router.get('/add',isLoggedIn, async (req, res) =>{
       console.log(newLibro)
 
     await pool.query ('INSERT INTO libros  set ?',[newLibro]);
-    req.flash('message', 'Libro Guardado Correctamente' );
+    req.flash('succes', 'Libro Guardado Correctamente' );
    res.redirect('/libros');
     //res.send('recivido');
 });
@@ -42,7 +42,7 @@ router.get('/delete/:id',isLoggedIn, async(req, res)=>{
   //console.log(id);
    await pool.query('DELETE FROM  libros WHERE id_libros = ?', [id]);
 //res.send('recibido');
-req.flash('message', 'Libro Eliminado Correctamente' );
+req.flash('success', 'Libro Eliminado Correctamente' );
    res.redirect('/libros');
 });
 
@@ -70,7 +70,7 @@ router.post('/edit/:id', async (req, res)=>{
  console.log(id);
  // console.log(edUsuario);
   await pool.query('UPDATE libros set ? WHERE id_libros = ?', [edLibro, id]);
-  req.flash('message', 'Libro Actualizado Correctamente' );
+  req.flash('success', 'Libro Actualizado Correctamente' );
   res.redirect('/libros');
  //res.send('recivido');
 })
