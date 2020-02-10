@@ -37,65 +37,71 @@ router.get('/',isLoggedIn, async (req, res)=>{
  router.post('/add/:id_libro', async (req, res)=>{
     const  { id_libro} = req.params;
       
-     const { ci, fechaprestamo, id_usuario}= req.body;
-     // obtener el id del del lector
-     //--------------------------------------------------------------------------------//
+     const  { ci, fechaprestamo, id_usuario}= req.body;
      
-     const lector= await pool.query('select * from lectores where  ci = ?',ci);
-     if (lector.length > 0){
-         
-        lector.forEach(element => {
-           
-                es = element.estado;
-            id_lector = element.id_lectores;
-            
-          
-            
-      });
+ ////////////////////////////////////////////////////////////obtener lector;
+ const lector = await pool.query('select * from lectores where ci = ?',ci);
+ 
 
     
-     } else {
-         console.log('no existe');
-         req.flash('message','El Lector No Existe')
-         res.redirect('/lectores/add');
-     }
-     //----------------------------------------------------------------------------------
-     // obteniendo el id del libro
-  /* const libro   = await pool.query('select * from libros where isbn_libro = ?', id);
-   libro.forEach(element => {
-    id_libro = element.isbn_libro;
-   });*/
-   
+    if (lector.length > 0){
+        console.log(lector)
+        lector.forEach(element => {
+            id_lector = element.id_lectores;
+            estadolector = element.estado
+       
+        });
+        console.log(id_lector)
+        console.log(estadolector);
+       const libros= await pool.query('select * from libros where id_libros = ?',id_libro);
+       
+       libros.forEach(element => {
+           prestados_libros = element.prestados_libro;
+       });
+       if (prestados_libros==0){
 
-   if (es ==0){
-   const estado_prestamo = 1;
-     const add ={
-         id_libro,
-         id_lector,
-         fechaprestamo,
-         
-         estado_prestamo,
-         id_usuario
-     };
-     const  prestados_libro =1;
-     const  estado =0;
-     const e={ estado}
+        if (estadolector==0){
+            estado_prestamo=1
+        const prestamoadd = {
+            id_libro ,
+            id_lector,
+            fechaprestamo,
+            estado_prestamo,
+            id_usuario
 
-     const p = { prestados_libro};
-   const registrar =await pool.query('insert into prestamos set ?',[add])
-  const libros = await pool.query('update libros set ? where id_libros = ?',[p,id_libro]);
-  const lectores = await pool.query('update lectores set ? where id_lectores = ?',[e,id_lector]);
+        }
+        const add = await pool.query('insert into prestamos set ?',[prestamoadd]);
+        const prestados_libro = 1;
+        const libroupdate ={prestados_libro};
 
-     console.log(registrar);
-     
-    // console.log(d);
-    //console.log(ci);
-    req.flash('success','Prestamo registrado Correctamente');
-    res.redirect('/prestamos/pendientes');
-   }else {
-    req.flash('message', 'Lector no Disponible' );
-    res.redirect('/prestamos');
-   }
+        const libroadd = await pool.query('update libros set ? Where id_libros = ?',[libroupdate, id_libro]);
+
+        const estado =1;
+        const estado_lector ={estado}
+
+        const lectorupdate =await pool.query('update lectores  set ? where id_lectores =?',[estado_lector, id_lector]);
+            req.flash('success', 'Prestamo Realizado' );
+            res.redirect('/prestamos/pendientes');
+
+        }else{
+            req.flash('message', 'Lector con pendientes' );
+            res.redirect('/prestamos');
+        }
+
+
+       }
+       else{
+        req.flash('message', 'Libro no dispopnible' );
+        res.redirect('/prestamos');
+       }
+    
+}else {
+    req.flash('message', 'Lector no regisstrado' );
+    res.redirect('/lectores');
+}
+
+
+
  })
 ///////////////////////////////////////////////////
 
