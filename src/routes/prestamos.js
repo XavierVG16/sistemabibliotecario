@@ -130,7 +130,7 @@ const fechadevolucion = yyyy+'-'+mm+"-"+dd;
 
 const lectores = await pool.query('select * from prestamos Where id = ?',id);
 lectores.forEach(element => {
-    id_lector = element.id_lectore;
+    id_lector = element.id_lector;
     id_libro = element.id_libro;
 });
 const estado = 0;

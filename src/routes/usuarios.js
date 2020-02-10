@@ -63,26 +63,28 @@ router.get('/edit/:id', isLoggedIn,async(req, res)=>{
   // res.send('recivido');
  });
 router.post('/edit/:id', async (req, res)=>{
-    const { id } = req.params;
-    const{nombres, apellidos,ci, email,telefono, 	pass_usuario, id_tipousuario} = req.body;
-    const usuario_id = await pool.query('select * from tipousuario where denominacion = ?',id_tipousuario);
-    usuario_id.forEach(element => {
-      idtipousuario = element.id;
-    });
-    const edUsuario={
-        nombres, 
-        apellidos, 
-        ci,
-         email, 
-         telefono,
-         pass_usuario,
-         idtipousuario
+  /// editar usiario
+  const { id } = req.params;
+  const{nombres, apellidos,ci, email,telefono, 	pass_usuario, id_tipousuario} = req.body;
+  const usuario_id = await pool.query('select * from tipousuario where denominacion = ?',id_tipousuario);
+  usuario_id.forEach(element => {
+    idtipousuario = element.id;
+  });
+  const edUsuario={
+      nombres, 
+      apellidos, 
+      ci,
+       email, 
+       telefono,
+       pass_usuario,
+       idtipousuario
 
-    };
-    edUsuario.pass_usuario = await helpers.encryptPassword(pass_usuario);
-   console.log(id);
-   // console.log(edUsuario);
-    await pool.query('UPDATE usuarios set ? WHERE id_usuario = ?', [edUsuario, id]);
+  };
+  edUsuario.pass_usuario = await helpers.encryptPassword(pass_usuario);
+ console.log(id);
+ // console.log(edUsuario);
+  await pool.query('UPDATE usuarios set ? WHERE id_usuario = ?', [edUsuario, id]);
+
     req.flash('success', 'Usuario Actualizado Correctamente' );
     res.redirect('/usuarios');
 });
