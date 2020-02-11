@@ -81,11 +81,11 @@ router.get('/',isLoggedIn, async (req, res)=>{
 
         const lectorupdate =await pool.query('update lectores  set ? where id_lectores =?',[estado_lector, id_lector]);
             req.flash('success', 'Prestamo Realizado' );
-            res.redirect('/prestamos/pendientes');
+            res.redirect('/prestamos/todo');
 
         }else{
-            req.flash('message', 'Lector con pendientes' );
-            res.redirect('/prestamos');
+            req.flash('message', 'Lector con prestamos  pendientes' );
+            res.redirect('/prestamos/pendientes');
         }
 
 
@@ -96,8 +96,8 @@ router.get('/',isLoggedIn, async (req, res)=>{
        }
     
 }else {
-    req.flash('message', 'Lector no regisstrado' );
-    res.redirect('/lectores');
+    req.flash('message', 'Lector no registrado' );
+    res.redirect('/lectores/add');
 }
 
 
@@ -150,7 +150,7 @@ const prestados = {prestados_libro}
  const prestamo =   await pool.query('Update prestamos set  ? Where id = ? ',[entregado, id]);
 console.log(prestamo);
 
-     req.flash('success', 'Libro entregado Correctamente' );
+     req.flash('success', 'Libro Devuelto Correctamente' );
     res.redirect('/prestamos/pendientes');
 });
 router.get('/', async (req, res)=>{

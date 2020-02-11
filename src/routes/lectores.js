@@ -63,7 +63,7 @@ router.get('/',isLoggedIn, async (req, res)=>{
     // console.log(req.params.id);
     const { id} = req.params;
      await pool.query('DELETE FROM  lectores WHERE id_lectores = ?', [id]);
-     req.flash('success', 'Lector eliminado Correctamente' );
+     req.flash('success', 'Lector Eliminado Correctamente' );
      res.redirect('/lectores');
      
  });
