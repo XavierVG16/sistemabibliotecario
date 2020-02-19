@@ -31,7 +31,7 @@ router.get('/add',isLoggedIn, async (req, res) =>{
 router.get('/',isLoggedIn, async (req, res)=>{
     
 
-  const libros = await pool.query('select * from libros ');
+  const libros = await pool.query('select * from libros inner join carreras on  libros.id_facultad = carreras.id ');
  // console.log(usuarios);
 
   res.render('libros/list',{ libros });
