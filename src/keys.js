@@ -4,11 +4,11 @@ module.exports = {
       
      
 
- /*  host: 'localhost',
-        user: 'root',
-        password: '',
-        database: 'sistemabiblioteca'
-
+ /*  
+ host: 'localhost',
+      user: 'root',
+      password: '',
+      database: 'sistemabiblioteca'
 
         host: 'sql10.freesqldatabase.com',
         user: 'sql10323293',

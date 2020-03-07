@@ -6,7 +6,7 @@ const pool = require('../database');
 const { isLoggedIn } = require('../lib/auth');
 
 router.get('/add',isLoggedIn, async (req, res) =>{
-    const carrera = await pool.query('select * from carreras ');
+    const carrera = await pool.query('select * from carreras '); 
     // console.log(usuarios);
       res.render('libros/add',{carrera});
   });
@@ -19,8 +19,8 @@ router.get('/add',isLoggedIn, async (req, res) =>{
       id_facultad = element.id;
     });
 
-
-    const newLibro={ codigo_libro, isbn_libro,titulo_libro, stock_libro, autor_libro, editorial_libro,ediccion_libro, publicacion_libro,  idioma_libro,ejemplares_libro,id_facultad};
+const prestados_libro=0;
+    const newLibro={ codigo_libro, isbn_libro,titulo_libro, stock_libro, autor_libro, editorial_libro,ediccion_libro, publicacion_libro,  idioma_libro,ejemplares_libro,prestados_libro,id_facultad};
       console.log(newLibro)
 
     await pool.query ('INSERT INTO libros  set ?',[newLibro]);

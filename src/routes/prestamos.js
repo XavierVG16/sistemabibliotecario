@@ -59,13 +59,14 @@ router.get('/',isLoggedIn, async (req, res)=>{
            prestados_libros = element.prestados_libro;
        });
        if (prestados_libros==0){
-
+          const fechadevolucion= "";
         if (estadolector==0){
             estado_prestamo=1
         const prestamoadd = {
             id_libro ,
             id_lector,
             fechaprestamo,
+            fechadevolucion,
             estado_prestamo,
             id_usuario
 
