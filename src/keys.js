@@ -3,12 +3,9 @@ module.exports = {
     database: {
       
      
+   
 
  /*  
- host: 'localhost',
-      user: 'root',
-      password: '',
-      database: 'sistemabiblioteca'
 
         host: 'sql10.freesqldatabase.com',
         user: 'sql10323293',
@@ -21,7 +18,10 @@ module.exports = {
         database: 'bhpjepiev3h1lnhkdaws'
        
 
-     
+        host: 'localhost',
+      user: 'root',
+      password: '',
+      database: 'sistemabiblioteca'
         
 
        
@@ -31,12 +31,14 @@ module.exports = {
 
 
         */
-       
-       host: 'bhpjepiev3h1lnhkdaws-mysql.services.clever-cloud.com',
-       user: 'uxm1civdjdgh9dby',
-       password: 'g0aNZhEzqXwt5pIayJki',
-       database: 'bhpjepiev3h1lnhkdaws'
-     
+       /*
+      
+     */
+    
+    host: 'bhpjepiev3h1lnhkdaws-mysql.services.clever-cloud.com',
+    user: 'uxm1civdjdgh9dby',
+    password: 'g0aNZhEzqXwt5pIayJki',
+    database: 'bhpjepiev3h1lnhkdaws'
     }
 
 };

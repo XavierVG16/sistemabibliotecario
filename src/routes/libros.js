@@ -22,10 +22,25 @@ router.get('/add',isLoggedIn, async (req, res) =>{
 const prestados_libro=0;
     const newLibro={ codigo_libro, isbn_libro,titulo_libro, stock_libro, autor_libro, editorial_libro,ediccion_libro, publicacion_libro,  idioma_libro,ejemplares_libro,prestados_libro,id_facultad};
       console.log(newLibro)
+     //sentencian sql prueba // SELECT * FROM `libros` WHERE codigo_libro = 'ISTVL- ENG- SWL20' or isbn_libro='978-970-817-087-1'
+ 
+     const rows = await pool.query(' SELECT * FROM libros WHERE  isbn_libro = ?  ', isbn_libro);
 
-    await pool.query ('INSERT INTO libros  set ?',[newLibro]);
-    req.flash('succes', 'Libro Guardado Correctamente' );
-   res.redirect('/libros');
+   
+     if (rows.length > 0){
+      req.flash('message', ' ISBN ya exixten' );
+      res.redirect('/libros/add');
+       
+    
+     }else{
+  
+      await pool.query ('INSERT INTO libros  set ?',[newLibro]);
+      req.flash('succes', 'Libro guardado correctamente' );
+     res.redirect('/libros');
+    
+     }
+
+
     //res.send('recivido');
 });
 router.get('/',isLoggedIn, async (req, res)=>{

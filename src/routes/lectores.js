@@ -42,11 +42,21 @@ router.post('/add', isLoggedIn,async (req, res)  =>{
    
    });
     */
-    
+     // pruebas de autenticaion 2 
+ const rows = await pool.query('select *  from lectores where ci = ? ', ci);
+ if (rows.length > 0){
+  req.flash('message', 'El lector ya existe' );
+  res.redirect('/lectores/add');
+   
 
+ }else{
   await pool.query ('INSERT INTO lectores  set ?',[newLector]);
-   req.flash('success', 'Lector Guardado Correctamente' );
-  res.redirect('/lectores');
+  req.flash('success', 'Lector guardado correctamente' );
+ res.redirect('/lectores');
+
+   console.log('usuaio no registrado');
+
+ }
  
 });
 
@@ -63,7 +73,7 @@ router.get('/',isLoggedIn, async (req, res)=>{
     // console.log(req.params.id);
     const { id} = req.params;
      await pool.query('DELETE FROM  lectores WHERE id_lectores = ?', [id]);
-     req.flash('success', 'Lector Eliminado Correctamente' );
+     req.flash('success', 'Lector eliminado correctamente' );
      res.redirect('/lectores');
      
  });
@@ -97,8 +107,11 @@ router.get('/',isLoggedIn, async (req, res)=>{
    console.log(id);
    console.log(id_tipolector);
    // console.log(edUsuario);
+
+
+   
    await pool.query('UPDATE lectores set ? WHERE id_lectores = ?', [edLector, id]);
-   req.flash('success', 'Lector Actualizado Correctamente' );
+   req.flash('success', 'Lector actualizado correctamente' );
    res.redirect('/lectores');
   // res.send('recivido');
 })

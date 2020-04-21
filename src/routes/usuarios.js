@@ -31,11 +31,27 @@ router.post('/add', async(req, res)=>{
          idtipousuario
 
     };
-    newUsuario.pass_usuario = await helpers.encryptPassword(pass_usuario);
+ // pruebas de validacion datos cedula3 
+ const rows = await pool.query('select *  from usuarios where ci = ? ', ci);
+ if (rows.length > 0){
+  req.flash('message', 'El usuario ya existe' );
+  res.redirect('/usuarios/add');
+   console.log('usuario encontrado ');
+
+ }else{
+  newUsuario.pass_usuario = await helpers.encryptPassword(pass_usuario);
+  await pool.query('insert into usuarios set ?',[newUsuario]);
+   req.flash('success', 'Usuario agregado correctamente' );
+  res.redirect('/usuarios');
+
+   console.log('usuaio no registrado');
+
+ }
+    
+ 
   
-   await pool.query('insert into usuarios set ?',[newUsuario]);
-    req.flash('message', 'Usuario Agregado Correctamente' );
-    res.redirect('/usuarios');
+
+ 
 });
 // tabla de ususarios
 router.get('/',async (req, res)=>{
@@ -50,7 +66,7 @@ router.get('/delete/:id', async(req, res)=>{
    const { id} = req.params;
     await pool.query('DELETE FROM usuarios WHERE id_usuario = ?', [id]);
   
-  req.flash('success', 'Usuario Eliminado Correctamente' );
+  req.flash('success', 'Usuario eliminado correctamente' );
     res.redirect('/usuarios');
 });
 router.get('/edit/:id', isLoggedIn,async(req, res)=>{
@@ -85,7 +101,7 @@ router.post('/edit/:id', async (req, res)=>{
  // console.log(edUsuario);
   await pool.query('UPDATE usuarios set ? WHERE id_usuario = ?', [edUsuario, id]);
 
-    req.flash('success', 'Usuario Actualizado Correctamente' );
+    req.flash('success', 'Usuario actualizado correctamente' );
     res.redirect('/usuarios');
 });
 

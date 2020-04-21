@@ -20,11 +20,15 @@
     "timeago.js": "^4.0.2"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "http": "0.0.1-security",
+    "mocha": "^7.1.1",
     "nodemon": "^2.0.2"
   },
   "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "test": "node test/run.js"
   },
   "keywords": [],
   "author": "",

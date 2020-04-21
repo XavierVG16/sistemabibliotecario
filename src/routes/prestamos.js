@@ -20,8 +20,20 @@ router.get('/',isLoggedIn, async (req, res)=>{
 
     const libros = await pool.query('select *  from libros inner join estado on libros.prestados_libro = estado.idestado inner join carreras on  libros.id_facultad = carreras.id  ');
     // console.log(usuarios);
-  
    
+   //pruebas mostrar catidad de libros 
+
+   libros.forEach(element => {
+       ejemplares = element.ejemplares_libro;
+       if(ejemplares > 0){
+           estado = "Disponible "+ejemplares;
+       } else if (ejemplares == 0){
+           estado ="Prestado";
+       }
+       const ejemplar ={ estado };
+       console.log(estado , ejemplar);
+   });
+
      res.render('prestamos/list',  { libros });
  });
 
