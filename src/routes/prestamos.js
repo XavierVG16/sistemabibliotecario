@@ -34,6 +34,8 @@ router.get('/',isLoggedIn, async (req, res)=>{
        console.log(estado , ejemplar);
    });
 
+   
+
      res.render('prestamos/list',  { libros });
  });
 

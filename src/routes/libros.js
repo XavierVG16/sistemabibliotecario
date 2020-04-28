@@ -1,7 +1,7 @@
 // almasenar rutas las rutas
 const {Router} = require('express');
 const router = Router();
-const pool = require('../database');
+const pool = require('../database'); 
 
 const { isLoggedIn } = require('../lib/auth');
 

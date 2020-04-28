@@ -18,10 +18,7 @@ module.exports = {
         database: 'bhpjepiev3h1lnhkdaws'
        
 
-        host: 'localhost',
-      user: 'root',
-      password: '',
-      database: 'sistemabiblioteca'
+    
         
 
        
@@ -32,6 +29,11 @@ module.exports = {
 
         */
        /*
+
+        host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'sistemabiblioteca'
       
      */
     
