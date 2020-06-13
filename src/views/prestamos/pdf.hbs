@@ -1,0 +1,62 @@
+<div class="content-wrapper">
+    
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1> Reportes</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/principal">Inicio</a></li>
+              <li class="breadcrumb-item"><a href="/prestamos">Prestamos</a></li>
+              <li class="breadcrumb-item active">Reportes</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- contenedor -->
+    <section class="content">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Detalle Reporte</h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool .btn-flat" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                <i class="fas fa-minus"></i></button>
+              
+              </div>              
+            </div>
+           
+
+            <div class="card-body">
+            <form action="/prestamos/pdf/print" method="POST">
+
+ <input type="hidden"  name ='usuario' value="{{user.nombres}} {{user.apellidos}} ">
+ <div class="form-row">
+    <div class="form-group col-md-6">
+      <label >Fecha de Reportes</label>
+      <input type="date" class="form-control" name="fechaprestamo" required>
+    </div>
+   
+  </div>
+  
+  <button type="submit" class="btn btn-primary"> Descargar </button>
+  
+  
+</form>
+            </div>
+            
+          </div>
+         
+        </div>
+      
+      </div>
+    
+    </section>
+  
+  </div>
+</div>
