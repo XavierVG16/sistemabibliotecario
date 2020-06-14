@@ -72,8 +72,10 @@ router.get('/',isLoggedIn, async (req, res)=>{
  router.get('/delete/:id', async(req, res)=>{
     // console.log(req.params.id);
     const { id} = req.params;
+    await pool.query('DELETE FROM  prestamos WHERE id_lector = ?', [id]);
+    
      await pool.query('DELETE FROM  lectores WHERE id_lectores = ?', [id]);
-     req.flash('success', 'Lector eliminado correctamente' );
+     req.flash('success', 'Lector y registros eliminados' );
      res.redirect('/lectores');
      
  });

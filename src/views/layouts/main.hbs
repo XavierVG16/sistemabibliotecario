@@ -6,17 +6,28 @@
      <meta name="author" content="https://www.facebook.com/javier.velasque.562" />
     <meta name="description" content="Sistema Bibliotecario del Instituto Superior Tecnologico  Vicente Leon" />
     <meta name="Keywors" content="biblioteca,  vicente, leon, prestamos, libros, estado,">
-    <meta name="viewport" content="width={device-width}, initial-scale=1.0">
+
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   
+   {{#if user}}
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css" integrity="sha384-REHJTs1r2ErKBuJB0fCK99gCYsVjwxHrSU0N7I1zl9vZbggVJXRMsv/sLlOAGb4M" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/all.min.css">
   <link rel="stylesheet" href="/css/adminlte.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    {{else}}
+  <link rel="stylesheet" href="/css/adminlte.min.css">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css" integrity="sha384-REHJTs1r2ErKBuJB0fCK99gCYsVjwxHrSU0N7I1zl9vZbggVJXRMsv/sLlOAGb4M" crossorigin="anonymous">
+
   <link rel="stylesheet" href="/css/color.css">
   <link rel="stylesheet" href="/css/dataTables.bootstrap4.css">
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   
-  <link rel="shortcut icon" href="/img/logo2.PNG" type="image/x-icon">
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+  {{/if}}
+  <link rel="shortcut icon" href="https://res.cloudinary.com/dzcptjcns/image/upload/v1592081285/logo2_vxjeec.png" type="image/x-icon">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -41,4 +52,10 @@
 <script src="/js/dataTables.bootstrap4.js"></script>
 <script src="/js/bootstrap.bundle.min.js"></script>
 <script src="/js/table.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+ 
+      <link rel="stylesheet" href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.18/datatables.min.css">
+        <script src="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.18/datatables.min.js"></script>
 </html>
