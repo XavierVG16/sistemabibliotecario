@@ -56,7 +56,8 @@ router.post('/add', async(req, res)=>{
 // tabla de ususarios
 router.get('/',async (req, res)=>{
     const {id_usuario}= req.user
-   const usuarios = await pool.query('select *, tipousuario.denominacion as tipo  from usuarios inner join tipousuario on usuarios.idtipousuario = tipousuario.id id_usuario != ?', id_usuario);
+const id = {id_usuario}
+            const usuarios = await pool.query('select *, tipousuario.denominacion as tipo  from usuarios inner join tipousuario on usuarios.idtipousuario = tipousuario.id id_usuario != ?', id);
   // console.log(usuarios);
    res.render('usuarios/list',{ usuarios });
 });
